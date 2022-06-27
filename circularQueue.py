@@ -16,7 +16,7 @@ class CircleQueue:
         return False
     # 공백 상태를 front == rear로 구분한다. 
     def is_full(self):
-        if (self.rerarr+1)%self.MAX_SIZE == self.front:
+        if (self.rear+1)%self.MAX_SIZE == self.front:
             return True
         return False
 
@@ -35,11 +35,18 @@ class CircleQueue:
         return self.queue[self.front]
 
     def print_queue(self):
+        i = self.front
         if self.is_empty():
             print("ERROR: EMPTY")
-        i = self.front
         while True:
             i = (i+1)%self.MAX_SIZE
             print(self.queue[i], ' ')
-            if i == self.rear or i != self.front:
+            if i == self.rear:
                 break 
+
+
+circle_queue = CircleQueue()
+circle_queue.enqueue(3)
+circle_queue.enqueue(4)
+print(circle_queue.queue)
+circle_queue.print_queue()
