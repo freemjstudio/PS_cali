@@ -34,3 +34,12 @@ class CircleQueue:
         self.front = (self.front -1) %(self.MAX_SIZE)
         return self.queue[self.front]
 
+    def print_queue(self):
+        if self.is_empty():
+            print("ERROR: EMPTY")
+        i = self.front
+        while True:
+            i = (i+1)%self.MAX_SIZE
+            print(self.queue[i], ' ')
+            if i == self.rear or i != self.front:
+                break 
